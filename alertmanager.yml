@@ -1,0 +1,17 @@
+global:
+  resolve_timeout: 5m
+
+route:
+  receiver: 'discord'
+  group_wait: 10s
+  group_interval: 10s
+  repeat_interval: 1h
+
+receivers:
+  - name: 'discord'
+    webhook_configs:
+      - url: 'https://us2.make.com/156537/team/dashboard'
+        send_resolved: true
+        http_config:
+          bearer_token: '' # Si nécessaire
+        max_alerts: 0

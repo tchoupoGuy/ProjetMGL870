@@ -1,0 +1,133 @@
+services:
+  node-api-a:
+    build: ./node-api-a
+    container_name: node-api-a
+    env_file:
+      # - .env
+      - ./node-api-a/.env
+    ports:
+      - '3001:3001'
+    environment:
+      - APP_NAME=node-api-a
+    depends_on:
+      - loki
+      - jaeger
+      - collector
+      - fluent-bit
+    volumes:
+      - ./node-api-a/logs:/var/log/api-a
+    networks:
+      - observability
+
+  node-api-b:
+    build: ./node-api-b
+    container_name: node-api-b
+    env_file:
+      # - .env
+      - ./node-api-b/.env
+    ports:
+      - '3002:3002'
+    environment:
+      - APP_NAME=node-api-b
+    depends_on:
+      - loki
+      - jaeger
+      - collector
+      - fluent-bit
+    volumes:
+      - ./node-api-b/logs:/var/log/api-b
+    networks:
+      - observability
+
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: node-api-prometheus
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+      - ./alert.rules.yml:/etc/prometheus/alert.rules.yml
+    ports:
+      - '9090:9090'
+    depends_on:
+      - alertmanager
+    networks:
+      - observability
+
+  alertmanager:
+    image: prom/alertmanager:latest
+    container_name: alertmanager
+    volumes:
+      - ./alertmanager.yml:/etc/alertmanager/alertmanager.yml
+    ports:
+      - '9093:9093'
+    networks:
+      - observability
+  loki:
+    image: grafana/loki:latest
+    container_name: node-api-loki
+    ports:
+      - '3100:3100'
+    volumes:
+      - ./loki/loki-config.yml:/etc/loki/local-config.yml
+    networks:
+      - observability
+
+  fluent-bit:
+    image: fluent/fluent-bit:latest
+    container_name: node-api-fluent-bit
+    volumes:
+      - ./fluentbit/fluent-bit.conf:/fluent-bit/etc/fluent-bit.conf
+    ports:
+      - '2020:2020'
+      - '2021:2021'
+      - '24224:24224'
+    networks:
+      - observability
+    depends_on:
+      - loki
+
+  jaeger:
+    image: jaegertracing/all-in-one:1.33
+    container_name: node-api-jaeger
+    ports:
+      - '16686:16686' # UI
+      - '14268:14268' # Collector
+      - '14250:14250' # gRPC
+      - '6831:6831/udp' # Agent
+      - '6832:6832/udp' # Agent
+      - '5778:5778' # Sampling
+    networks:
+      - observability
+
+  collector:
+    image: otel/opentelemetry-collector:latest
+    ports:
+      - '4317:4317'
+      - '4318:4318'
+    volumes:
+      - ./otel-collector-config.yml:/etc/otel-collector-config.yml
+    environment:
+      - OTEL_LOGS_EXPORTER=otlp
+      - OTEL_TRACES_EXPORTER=otlp
+      - OTEL_EXPORTER_OTLP_ENDPOINT=http://collector:4317
+    networks:
+      - observability
+
+  grafana:
+    image: grafana/grafana:latest
+    container_name: grafana
+    ports:
+      - '3000:3000'
+    environment:
+      - GF_SECURITY_ADMIN_USER=admin
+      - GF_SECURITY_ADMIN_PASSWORD=admin
+    volumes:
+      - ./grafana/provisioning/:/etc/grafana/provisioning/
+    depends_on:
+      - loki
+      - jaeger
+    networks:
+      - observability
+
+networks:
+  observability:
+    driver: bridge

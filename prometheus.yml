@@ -1,0 +1,16 @@
+global:
+  scrape_interval: 15s
+
+scrape_configs:
+  - job_name: 'node-api-a'
+    scrape_interval: 5s # Fréquence de scraping (optionnel)
+    static_configs:
+      - targets: ['node-api-a:3001'] # Utilisez le port exposé dans votre Docker Compose pour node-api-a
+
+  - job_name: 'node-api-b'
+    scrape_interval: 5s
+    static_configs:
+      - targets: ['node-api-b:3002'] # Utilisez le port exposé dans votre Docker Compose pour node-api-b
+
+rule_files:
+  - 'alert.rules.yml'

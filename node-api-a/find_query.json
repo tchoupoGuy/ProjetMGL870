@@ -1,0 +1,36 @@
+{
+    "_id" : ObjectId("63f339c7ebab391ceef2cdec"),
+    "libelle" : "Position",
+    "observations" : "",
+    "ordre" : 1.0
+}
+{
+    "_id" : ObjectId("63f339deebab391ceef2cded"),
+    "libelle" : "Site",
+    "observations" : "",
+    "ordre" : 2.0
+}
+{
+    "_id" : ObjectId("63f339faebab391ceef2cdee"),
+    "libelle" : "Chargée",
+    "observations" : "",
+    "ordre" : 3.0
+}
+{
+    "_id" : ObjectId("63f33a35ebab391ceef2cdef"),
+    "libelle" : "Depart",
+    "observations" : "",
+    "ordre" : 4.0
+}
+{
+    "_id" : ObjectId("63f33a4bebab391ceef2cdf0"),
+    "libelle" : "Arrivée",
+    "observations" : "",
+    "ordre" : 5.0
+}
+{
+    "_id" : ObjectId("63f33a70ebab391ceef2cdf1"),
+    "libelle" : "Décharge",
+    "observations" : "",
+    "ordre" : 6.0
+}

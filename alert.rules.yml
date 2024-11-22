@@ -1,0 +1,38 @@
+groups:
+  - name: node-api-alerts
+    rules:
+      - alert: HighRequestLatencyA
+        expr: http_request_duration_ms{job="node-api-a"} > 500
+        for: 1m
+        labels:
+          severity: warning
+        annotations:
+          summary: 'High request latency on node-api-a'
+          description: 'The request latency is above 500ms for more than 1 minute.'
+
+      - alert: HighErrorRateA
+        expr: rate(http_requests_total{job="node-api-a", statusCode="500"}[5m]) > 0.05
+        for: 5m
+        labels:
+          severity: critical
+        annotations:
+          summary: 'High error rate on node-api-a'
+          description: 'The error rate is above 5% over the last 5 minutes.'
+
+      - alert: HighRequestLatencyB
+        expr: http_request_duration_ms{job="node-api-b"} > 500
+        for: 1m
+        labels:
+          severity: warning
+        annotations:
+          summary: 'High request latency on node-api-b'
+          description: 'The request latency is above 500ms for more than 1 minute.'
+
+      - alert: HighErrorRateB
+        expr: rate(http_requests_total{job="node-api-b", statusCode="500"}[5m]) > 0.05
+        for: 5m
+        labels:
+          severity: critical
+        annotations:
+          summary: 'High error rate on node-api-b'
+          description: 'The error rate is above 5% over the last 5 minutes.'

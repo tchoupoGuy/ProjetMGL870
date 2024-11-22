@@ -1,0 +1,99 @@
+{"level":"warn","message":"@opentelemetry/instrumentation-express","service":"node-api-a","timestamp":"2024-10-16T02:44:59.284Z"}
+{"level":"warn","message":"@opentelemetry/instrumentation-mongodb","service":"node-api-a","timestamp":"2024-10-16T02:44:59.305Z"}
+{"level":"warn","message":"@opentelemetry/instrumentation-mongodb","service":"node-api-a","timestamp":"2024-10-16T02:44:59.306Z"}
+{"level":"warn","message":"@opentelemetry/instrumentation-mongoose","service":"node-api-a","timestamp":"2024-10-16T02:44:59.308Z"}
+{"level":"warn","message":"@opentelemetry/instrumentation-winston","service":"node-api-a","timestamp":"2024-10-16T02:44:59.326Z"}
+{"level":"warn","message":"@opentelemetry/instrumentation-winston","service":"node-api-a","timestamp":"2024-10-16T02:44:59.327Z"}
+{"level":"warn","message":"The 'spanProcessor' option is deprecated. Please use 'spanProcessors' instead.","service":"node-api-a","timestamp":"2024-10-16T02:44:59.329Z"}
+{"level":"info","message":"OTEL_LOGS_EXPORTER is empty. Using default otlp exporter.","service":"node-api-a","timestamp":"2024-10-16T02:44:59.330Z"}
+{"level":"info","message":"Listening on port  3001","service":"node-api-a","timestamp":"2024-10-16T02:44:59.962Z"}
+{"level":"error","message":"Accessing resource attributes before async attributes settled","service":"node-api-a","timestamp":"2024-10-16T02:44:59.966Z"}
+{"level":"info","message":"Authenticated Middleware \n      request method: GET\n       request status code null\n      ","service":"node-api-a","timestamp":"2024-10-16T02:45:00.628Z"}
+{"address":"127.0.0.1","code":"ECONNREFUSED","errno":-111,"level":"error","message":"Loki connection error connect ECONNREFUSED 127.0.0.1:3100","port":3100,"service":"node-api-a","stack":"Error: connect ECONNREFUSED 127.0.0.1:3100\n    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1607:16)\n    at TCPConnectWrap.callbackTrampoline (node:internal/async_hooks:130:17)","syscall":"connect","timestamp":"2024-10-16T02:45:04.987Z"}
+{"level":"info","message":"Authenticated Middleware \n      request method: GET\n       request status code null\n      ","service":"node-api-a","timestamp":"2024-10-16T02:45:05.169Z"}
+{"level":"info","message":"Authenticated Middleware \n      request method: GET\n       request status code null\n      ","service":"node-api-a","timestamp":"2024-10-16T02:45:10.167Z"}
+{"level":"info","message":"Authenticated Middleware \n      request method: GET\n       request status code null\n      ","service":"node-api-a","timestamp":"2024-10-16T02:45:15.169Z"}
+{"level":"info","message":"Authenticated Middleware \n      request method: GET\n       request status code null\n      ","service":"node-api-a","timestamp":"2024-10-16T02:45:20.233Z"}
+{"level":"info","message":"Authenticated Middleware \n      request method: GET\n       request status code null\n      ","service":"node-api-a","timestamp":"2024-10-16T02:45:25.157Z"}
+{"level":"info","message":"Authenticated Middleware \n      request method: GET\n       request status code null\n      ","service":"node-api-a","timestamp":"2024-10-16T02:45:30.158Z"}
+{"level":"info","message":"Authenticated Middleware \n      request method: GET\n       request status code null\n      ","service":"node-api-a","timestamp":"2024-10-16T02:45:35.156Z"}
+{"level":"info","message":"Authenticated Middleware \n      request method: GET\n       request status code null\n      ","service":"node-api-a","timestamp":"2024-10-16T02:45:40.154Z"}
+{"level":"info","message":"Authenticated Middleware \n      request method: GET\n       request status code null\n      ","service":"node-api-a","timestamp":"2024-10-16T02:45:45.097Z"}
+{"level":"info","message":"Authenticated Middleware \n      request method: GET\n       request status code null\n      ","service":"node-api-a","timestamp":"2024-10-16T02:45:50.076Z"}
+{"level":"info","message":"Authenticated Middleware \n      request method: GET\n       request status code null\n      ","service":"node-api-a","timestamp":"2024-10-16T02:45:55.084Z"}
+{"level":"info","message":"Authenticated Middleware \n      request method: GET\n       request status code null\n      ","service":"node-api-a","timestamp":"2024-10-16T02:46:00.081Z"}
+{"address":"127.0.0.1","code":"ECONNREFUSED","errno":-111,"level":"error","message":"Loki connection error connect ECONNREFUSED 127.0.0.1:3100","port":3100,"service":"node-api-a","stack":"Error: connect ECONNREFUSED 127.0.0.1:3100\n    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1607:16)\n    at TCPConnectWrap.callbackTrampoline (node:internal/async_hooks:130:17)","syscall":"connect","timestamp":"2024-10-16T02:46:04.914Z"}
+{"level":"info","message":"Authenticated Middleware \n      request method: GET\n       request status code null\n      ","service":"node-api-a","timestamp":"2024-10-16T02:46:05.078Z"}
+{"level":"info","message":"Authenticated Middleware \n      request method: GET\n       request status code null\n      ","service":"node-api-a","timestamp":"2024-10-16T02:46:10.078Z"}
+{"level":"info","message":"Authenticated Middleware \n      request method: GET\n       request status code null\n      ","service":"node-api-a","timestamp":"2024-10-16T02:46:15.158Z"}
+{"level":"info","message":"Authenticated Middleware \n      request method: GET\n       request status code null\n      ","service":"node-api-a","timestamp":"2024-10-16T02:46:20.156Z"}
+{"level":"info","message":"Authenticated Middleware \n      request method: GET\n       request status code null\n      ","service":"node-api-a","timestamp":"2024-10-16T02:46:25.161Z"}
+{"level":"info","message":"Authenticated Middleware \n      request method: GET\n       request status code null\n      ","service":"node-api-a","timestamp":"2024-10-16T02:46:30.154Z"}
+{"level":"info","message":"Authenticated Middleware \n      request method: GET\n       request status code null\n      ","service":"node-api-a","timestamp":"2024-10-16T02:46:35.158Z"}
+{"level":"info","message":"Authenticated Middleware \n      request method: GET\n       request status code null\n      ","service":"node-api-a","timestamp":"2024-10-16T02:46:40.154Z"}
+{"level":"info","message":"Authenticated Middleware \n      request method: GET\n       request status code null\n      ","service":"node-api-a","timestamp":"2024-10-16T02:46:45.153Z"}
+{"level":"info","message":"Authenticated Middleware \n      request method: GET\n       request status code null\n      ","service":"node-api-a","timestamp":"2024-10-16T02:46:50.153Z"}
+{"level":"info","message":"Authenticated Middleware \n      request method: GET\n       request status code null\n      ","service":"node-api-a","timestamp":"2024-10-16T02:46:55.158Z"}
+{"level":"info","message":"Authenticated Middleware \n      request method: GET\n       request status code null\n      ","service":"node-api-a","timestamp":"2024-10-16T02:47:00.152Z"}
+{"level":"info","message":"Authenticated Middleware \n      request method: POST\n       request status code null\n      ","service":"node-api-a","timestamp":"2024-10-16T02:47:03.197Z"}
+{"level":"warn","message":"@opentelemetry/instrumentation-express","service":"node-api-a","timestamp":"2024-10-16T02:56:10.802Z"}
+{"level":"warn","message":"@opentelemetry/instrumentation-mongodb","service":"node-api-a","timestamp":"2024-10-16T02:56:10.814Z"}
+{"level":"warn","message":"@opentelemetry/instrumentation-mongodb","service":"node-api-a","timestamp":"2024-10-16T02:56:10.816Z"}
+{"level":"warn","message":"@opentelemetry/instrumentation-mongoose","service":"node-api-a","timestamp":"2024-10-16T02:56:10.817Z"}
+{"level":"warn","message":"@opentelemetry/instrumentation-winston","service":"node-api-a","timestamp":"2024-10-16T02:56:10.829Z"}
+{"level":"warn","message":"@opentelemetry/instrumentation-winston","service":"node-api-a","timestamp":"2024-10-16T02:56:10.831Z"}
+{"level":"warn","message":"The 'spanProcessor' option is deprecated. Please use 'spanProcessors' instead.","service":"node-api-a","timestamp":"2024-10-16T02:56:10.833Z"}
+{"level":"info","message":"OTEL_LOGS_EXPORTER is empty. Using default otlp exporter.","service":"node-api-a","timestamp":"2024-10-16T02:56:10.834Z"}
+{"level":"info","message":"Listening on port  3001","service":"node-api-a","timestamp":"2024-10-16T02:56:11.138Z"}
+{"level":"error","message":"Accessing resource attributes before async attributes settled","service":"node-api-a","timestamp":"2024-10-16T02:56:11.140Z"}
+{"level":"info","message":"Authenticated Middleware \n      request method: GET\n       request status code null\n      ","service":"node-api-a","timestamp":"2024-10-16T02:56:12.179Z"}
+{"address":"127.0.0.1","code":"ECONNREFUSED","errno":-111,"level":"error","message":"Loki connection error connect ECONNREFUSED 127.0.0.1:3100","port":3100,"service":"node-api-a","stack":"Error: connect ECONNREFUSED 127.0.0.1:3100\n    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1607:16)\n    at TCPConnectWrap.callbackTrampoline (node:internal/async_hooks:130:17)","syscall":"connect","timestamp":"2024-10-16T02:56:16.154Z"}
+{"level":"info","message":"Authenticated Middleware \n      request method: GET\n       request status code null\n      ","service":"node-api-a","timestamp":"2024-10-16T02:56:17.145Z"}
+{"level":"info","message":"Authenticated Middleware \n      request method: GET\n       request status code null\n      ","service":"node-api-a","timestamp":"2024-10-16T02:56:22.139Z"}
+{"level":"info","message":"Authenticated Middleware \n      request method: GET\n       request status code null\n      ","service":"node-api-a","timestamp":"2024-10-16T02:56:27.142Z"}
+{"level":"info","message":"Authenticated Middleware \n      request method: GET\n       request status code null\n      ","service":"node-api-a","timestamp":"2024-10-16T02:56:32.141Z"}
+{"level":"info","message":"Authenticated Middleware \n      request method: GET\n       request status code null\n      ","service":"node-api-a","timestamp":"2024-10-16T02:56:37.138Z"}
+{"level":"info","message":"Authenticated Middleware \n      request method: GET\n       request status code null\n      ","service":"node-api-a","timestamp":"2024-10-16T02:56:42.140Z"}
+{"level":"info","message":"Authenticated Middleware \n      request method: GET\n       request status code null\n      ","service":"node-api-a","timestamp":"2024-10-16T02:56:47.143Z"}
+{"level":"info","message":"Authenticated Middleware \n      request method: GET\n       request status code null\n      ","service":"node-api-a","timestamp":"2024-10-16T02:56:52.138Z"}
+{"level":"info","message":"Authenticated Middleware \n      request method: GET\n       request status code null\n      ","service":"node-api-a","timestamp":"2024-10-16T02:56:57.141Z"}
+{"level":"info","message":"Authenticated Middleware \n      request method: GET\n       request status code null\n      ","service":"node-api-a","timestamp":"2024-10-16T02:57:02.139Z"}
+{"level":"info","message":"Authenticated Middleware \n      request method: GET\n       request status code null\n      ","service":"node-api-a","timestamp":"2024-10-16T02:57:07.139Z"}
+{"level":"info","message":"Authenticated Middleware \n      request method: GET\n       request status code null\n      ","service":"node-api-a","timestamp":"2024-10-16T02:57:12.138Z"}
+{"address":"127.0.0.1","code":"ECONNREFUSED","errno":-111,"level":"error","message":"Loki connection error connect ECONNREFUSED 127.0.0.1:3100","port":3100,"service":"node-api-a","stack":"Error: connect ECONNREFUSED 127.0.0.1:3100\n    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1607:16)\n    at TCPConnectWrap.callbackTrampoline (node:internal/async_hooks:130:17)","syscall":"connect","timestamp":"2024-10-16T02:57:16.158Z"}
+{"level":"info","message":"Authenticated Middleware \n      request method: GET\n       request status code null\n      ","service":"node-api-a","timestamp":"2024-10-16T02:57:17.150Z"}
+{"level":"info","message":"Authenticated Middleware \n      request method: GET\n       request status code null\n      ","service":"node-api-a","timestamp":"2024-10-16T02:57:22.135Z"}
+{"level":"info","message":"Authenticated Middleware \n      request method: GET\n       request status code null\n      ","service":"node-api-a","timestamp":"2024-10-16T02:57:27.139Z"}
+{"level":"info","message":"Authenticated Middleware \n      request method: GET\n       request status code null\n      ","service":"node-api-a","timestamp":"2024-10-16T02:57:32.139Z"}
+{"level":"info","message":"Authenticated Middleware \n      request method: GET\n       request status code null\n      ","service":"node-api-a","timestamp":"2024-10-16T02:57:37.136Z"}
+{"level":"info","message":"Authenticated Middleware \n      request method: GET\n       request status code null\n      ","service":"node-api-a","timestamp":"2024-10-16T02:57:42.137Z"}
+{"level":"info","message":"Authenticated Middleware \n      request method: GET\n       request status code null\n      ","service":"node-api-a","timestamp":"2024-10-16T02:57:47.138Z"}
+{"level":"info","message":"Authenticated Middleware \n      request method: GET\n       request status code null\n      ","service":"node-api-a","timestamp":"2024-10-16T02:57:52.143Z"}
+{"level":"info","message":"Authenticated Middleware \n      request method: GET\n       request status code null\n      ","service":"node-api-a","timestamp":"2024-10-16T02:57:57.139Z"}
+{"level":"info","message":"Authenticated Middleware \n      request method: GET\n       request status code null\n      ","service":"node-api-a","timestamp":"2024-10-16T02:58:02.135Z"}
+{"level":"info","message":"Authenticated Middleware \n      request method: GET\n       request status code null\n      ","service":"node-api-a","timestamp":"2024-10-16T02:58:07.139Z"}
+{"level":"info","message":"Authenticated Middleware \n      request method: GET\n       request status code null\n      ","service":"node-api-a","timestamp":"2024-10-16T02:58:12.142Z"}
+{"address":"127.0.0.1","code":"ECONNREFUSED","errno":-111,"level":"error","message":"Loki connection error connect ECONNREFUSED 127.0.0.1:3100","port":3100,"service":"node-api-a","stack":"Error: connect ECONNREFUSED 127.0.0.1:3100\n    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1607:16)\n    at TCPConnectWrap.callbackTrampoline (node:internal/async_hooks:130:17)","syscall":"connect","timestamp":"2024-10-16T02:58:16.160Z"}
+{"level":"info","message":"Authenticated Middleware \n      request method: GET\n       request status code null\n      ","service":"node-api-a","timestamp":"2024-10-16T02:58:17.133Z"}
+{"level":"info","message":"Authenticated Middleware \n      request method: GET\n       request status code null\n      ","service":"node-api-a","timestamp":"2024-10-16T02:58:22.135Z"}
+{"level":"info","message":"Authenticated Middleware \n      request method: GET\n       request status code null\n      ","service":"node-api-a","timestamp":"2024-10-16T02:58:27.137Z"}
+{"level":"info","message":"Authenticated Middleware \n      request method: GET\n       request status code null\n      ","service":"node-api-a","timestamp":"2024-10-16T02:58:32.137Z"}
+{"level":"info","message":"Authenticated Middleware \n      request method: GET\n       request status code null\n      ","service":"node-api-a","timestamp":"2024-10-16T02:58:37.135Z"}
+{"level":"info","message":"Authenticated Middleware \n      request method: GET\n       request status code null\n      ","service":"node-api-a","timestamp":"2024-10-16T02:58:42.136Z"}
+{"address":"127.0.0.1","code":"ECONNREFUSED","errno":-111,"level":"error","message":"Loki connection error connect ECONNREFUSED 127.0.0.1:3100","port":3100,"service":"node-api-a","stack":"Error: connect ECONNREFUSED 127.0.0.1:3100\n    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1607:16)\n    at TCPConnectWrap.callbackTrampoline (node:internal/async_hooks:130:17)","syscall":"connect","timestamp":"2024-10-16T02:58:42.500Z"}
+{"level":"warn","message":"@opentelemetry/instrumentation-express","service":"node-api-a","timestamp":"2024-10-16T02:59:34.106Z"}
+{"level":"warn","message":"@opentelemetry/instrumentation-mongodb","service":"node-api-a","timestamp":"2024-10-16T02:59:34.130Z"}
+{"level":"warn","message":"@opentelemetry/instrumentation-mongodb","service":"node-api-a","timestamp":"2024-10-16T02:59:34.131Z"}
+{"level":"warn","message":"@opentelemetry/instrumentation-mongoose","service":"node-api-a","timestamp":"2024-10-16T02:59:34.131Z"}
+{"level":"warn","message":"@opentelemetry/instrumentation-winston","service":"node-api-a","timestamp":"2024-10-16T02:59:34.145Z"}
+{"level":"warn","message":"@opentelemetry/instrumentation-winston","service":"node-api-a","timestamp":"2024-10-16T02:59:34.147Z"}
+{"level":"warn","message":"The 'spanProcessor' option is deprecated. Please use 'spanProcessors' instead.","service":"node-api-a","timestamp":"2024-10-16T02:59:34.148Z"}
+{"level":"info","message":"OTEL_LOGS_EXPORTER is empty. Using default otlp exporter.","service":"node-api-a","timestamp":"2024-10-16T02:59:34.149Z"}
+{"level":"info","message":"Listening on port  3001","service":"node-api-a","timestamp":"2024-10-16T02:59:34.489Z"}
+{"level":"error","message":"Accessing resource attributes before async attributes settled","service":"node-api-a","timestamp":"2024-10-16T02:59:34.497Z"}
+{"level":"info","message":"Authenticated Middleware \n      request method: GET\n       request status code null\n      ","service":"node-api-a","timestamp":"2024-10-16T02:59:34.980Z"}
+{"address":"127.0.0.1","code":"ECONNREFUSED","errno":-111,"level":"error","message":"Loki connection error connect ECONNREFUSED 127.0.0.1:3100","port":3100,"service":"node-api-a","stack":"Error: connect ECONNREFUSED 127.0.0.1:3100\n    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1607:16)\n    at TCPConnectWrap.callbackTrampoline (node:internal/async_hooks:130:17)","syscall":"connect","timestamp":"2024-10-16T02:59:39.512Z"}
+{"level":"info","message":"Authenticated Middleware \n      request method: GET\n       request status code null\n      ","service":"node-api-a","timestamp":"2024-10-16T02:59:39.927Z"}
+{"level":"info","message":"Authenticated Middleware \n      request method: GET\n       request status code null\n      ","service":"node-api-a","timestamp":"2024-10-16T02:59:44.911Z"}
+{"level":"info","message":"Authenticated Middleware \n      request method: GET\n       request status code null\n      ","service":"node-api-a","timestamp":"2024-10-16T02:59:49.909Z"}
+{"level":"info","message":"Authenticated Middleware \n      request method: GET\n       request status code null\n      ","service":"node-api-a","timestamp":"2024-10-16T02:59:54.918Z"}

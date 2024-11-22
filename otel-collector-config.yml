@@ -1,0 +1,35 @@
+receivers:
+  otlp:
+    protocols:
+      grpc:
+      http:
+
+exporters:
+  logging:
+    loglevel: debug
+  otlp:
+    endpoint: 'http://collector:4317'
+  jaeger:
+    endpoint: 'http://jaeger:14268/api/traces'
+  prometheus:
+    endpoint: '0.0.0.0:8889'
+
+processors:
+  batch:
+    timeout: 5s
+    send_batch_size: 512
+
+service:
+  pipelines:
+    traces:
+      receivers: [otlp]
+      processors: [batch]
+      exporters: [logging, otlp, jaeger]
+    metrics:
+      receivers: [otlp]
+      processors: [batch]
+      exporters: [prometheus]
+    logs:
+      receivers: [otlp]
+      processors: [batch]
+      exporters: [otlp]

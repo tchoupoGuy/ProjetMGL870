@@ -1,0 +1,36 @@
+2024-10-15T04:04:48.104Z [info]: Starting service: node-api-a    # Nom unique pour chaque service, par ex. node-api-a ou node-api-b, Log level: info            # Niveau de log : peut être 'debug', 'info', 'warn', 'error', Loki Host: http://localhost:3100   # Adresse de l'instance Loki
+2024-10-15T04:04:48.122Z [info]: Listening on port  3001
+2024-10-15T04:08:51.519Z [info]: Starting service: node-api-a    # Nom unique pour chaque service, par ex. node-api-a ou node-api-b, Log level: info            # Niveau de log : peut être 'debug', 'info', 'warn', 'error', Loki Host: http://localhost:3100   # Adresse de l'instance Loki
+2024-10-15T04:08:51.531Z [info]: Listening on port  3001
+2024-10-15T22:40:13.667Z [info]: Starting service: node-api-a    # Nom unique pour chaque service, par ex. node-api-a ou node-api-b, Log level: info            # Niveau de log : peut être 'debug', 'info', 'warn', 'error', Loki Host: http://localhost:3100   # Adresse de l'instance Loki
+2024-10-15T22:40:13.689Z [info]: Listening on port  3001
+2024-10-15T22:48:28.474Z [info]: Starting service: node-api-a    # Nom unique pour chaque service, par ex. node-api-a ou node-api-b, Log level: info            # Niveau de log : peut être 'debug', 'info', 'warn', 'error', Loki Host: http://localhost:3100   # Adresse de l'instance Loki
+2024-10-15T22:48:28.488Z [info]: Listening on port  3001
+2024-10-15T22:55:08.096Z [info]: Starting service: node-api-a    # Nom unique pour chaque service, par ex. node-api-a ou node-api-b, Log level: info            # Niveau de log : peut être 'debug', 'info', 'warn', 'error', Loki Host: http://localhost:3100   # Adresse de l'instance Loki
+2024-10-15T22:55:08.112Z [info]: Listening on port  3001
+2024-10-15T22:59:02.583Z [info]: Starting service: node-api-a    # Nom unique pour chaque service, par ex. node-api-a ou node-api-b, Log level: info            # Niveau de log : peut être 'debug', 'info', 'warn', 'error', Loki Host: http://localhost:3100   # Adresse de l'instance Loki
+2024-10-15T22:59:02.594Z [info]: Listening on port  3001
+2024-10-15T23:09:27.489Z [info]: Starting service: node-api-a    # Nom unique pour chaque service, par ex. node-api-a ou node-api-b, Log level: info            # Niveau de log : peut être 'debug', 'info', 'warn', 'error', Loki Host: http://localhost:3100   # Adresse de l'instance Loki
+2024-10-15T23:09:27.501Z [info]: Listening on port  3001
+2024-10-15T23:14:49.492Z [info]: Starting service: node-api-a    # Nom unique pour chaque service, par ex. node-api-a ou node-api-b, Log level: info            # Niveau de log : peut être 'debug', 'info', 'warn', 'error', Loki Host: http://localhost:3100   # Adresse de l'instance Loki
+2024-10-15T23:14:49.507Z [info]: Listening on port  3001
+2024-10-15T23:20:16.991Z [info]: Starting service: node-api-a    # Nom unique pour chaque service, par ex. node-api-a ou node-api-b, Log level: info            # Niveau de log : peut être 'debug', 'info', 'warn', 'error', Loki Host: http://localhost:3100   # Adresse de l'instance Loki
+2024-10-15T23:20:17.016Z [info]: Listening on port  3001
+2024-10-15T23:21:19.043Z [info]: Starting service: node-api-a    # Nom unique pour chaque service, par ex. node-api-a ou node-api-b, Log level: info            # Niveau de log : peut être 'debug', 'info', 'warn', 'error', Loki Host: http://localhost:3100   # Adresse de l'instance Loki
+2024-10-15T23:21:19.054Z [info]: Listening on port  3001
+2024-10-15T23:24:10.251Z [info]: Starting service: node-api-a    # Nom unique pour chaque service, par ex. node-api-a ou node-api-b, Log level: info            # Niveau de log : peut être 'debug', 'info', 'warn', 'error', Loki Host: http://localhost:3100   # Adresse de l'instance Loki
+2024-10-15T23:24:10.264Z [info]: Listening on port  3001
+2024-10-15T23:29:38.569Z [info]: Starting service: node-api-a    # Nom unique pour chaque service, par ex. node-api-a ou node-api-b, Log level: info            # Niveau de log : peut être 'debug', 'info', 'warn', 'error', Loki Host: http://localhost:3100   # Adresse de l'instance Loki
+2024-10-15T23:29:38.580Z [info]: Listening on port  3001
+2024-10-15T23:29:53.874Z [info]: Starting service: node-api-a    # Nom unique pour chaque service, par ex. node-api-a ou node-api-b, Log level: info            # Niveau de log : peut être 'debug', 'info', 'warn', 'error', Loki Host: http://localhost:3100   # Adresse de l'instance Loki
+2024-10-15T23:29:53.886Z [info]: Listening on port  3001
+2024-10-16T03:11:05.649Z [info]: Starting service: node-api-a    # Nom unique pour chaque service, par ex. node-api-a ou node-api-b, Log level: info            # Niveau de log : peut être 'debug', 'info', 'warn', 'error', Loki Host: http://localhost:3100   # Adresse de l'instance Loki
+2024-10-16T03:11:05.672Z [info]: Listening on port 3001
+2024-10-16T03:30:10.511Z [info]: Starting service: node-api-a    # Nom unique pour chaque service, par ex. node-api-a ou node-api-b, Log level: info            # Niveau de log : peut être 'debug', 'info', 'warn', 'error', Loki Host: http://localhost:3100   # Adresse de l'instance Loki
+2024-10-16T03:30:10.577Z [info]: Listening on port 3001
+2024-10-16T03:33:26.887Z [info]: Starting service: node-api-a, Log level: info, Loki Host: http://localhost:3100
+2024-10-16T03:33:26.946Z [info]: Listening on port 3001
+2024-10-16T22:18:19.300Z [info]: Starting service: node-api-a, Log level: info, Loki Host: http://localhost:3100
+2024-10-16T22:18:19.331Z [info]: Listening on port 3001
+2024-10-17T01:32:18.160Z [info]: Starting service: node-api-a, Log level: info, Loki Host: http://localhost:3100
+2024-10-17T01:32:18.178Z [info]: Listening on port 3001
