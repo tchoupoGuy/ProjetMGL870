@@ -1,35 +1,27 @@
-auth_enabled: false
-
 server:
   http_listen_port: 3100
 
 ingester:
   lifecycler:
-    address: 127.0.0.1
     ring:
       kvstore:
         store: inmemory
-      replication_factor: 1
-    final_sleep: 0s
-  chunk_idle_period: 5m
-  chunk_block_size: 262144
-  chunk_retain_period: 1m
-  max_transfer_retries: 0
 
 schema_config:
   configs:
-    - from: 2020-05-15
-      store: boltdb
+    - from: 2020-10-24
+      store: boltdb-shipper
       object_store: filesystem
       schema: v11
       index:
         prefix: index_
-        period: 168h
+        period: 24h
 
 storage_config:
-  boltdb:
-    directory: /loki/index
-
+  boltdb_shipper:
+    active_index_directory: /loki/index
+    cache_location: /loki/cache
+    shared_store: filesystem
   filesystem:
     directory: /loki/chunks
 
@@ -39,8 +31,26 @@ limits_config:
   reject_old_samples_max_age: 168h
 
 chunk_store_config:
-  max_look_back_period: 0s
+  max_look_back_period: 0
 
 table_manager:
-  retention_deletes_enabled: false
-  retention_period: 0s
+  retention_deletes_enabled: true
+  retention_period: 720h
+
+# Define pipeline stages for each API
+promtail_config:
+  scrape_configs:
+    - job_name: api-a
+      static_configs:
+        - targets:
+            - localhost
+          labels:
+            job: api-a
+            __path__: /var/log/api-a/*.log
+    - job_name: clicmedic
+      static_configs:
+        - targets:
+            - localhost
+          labels:
+            job: clicmedic
+            __path__: /var/log/clicmedic/*.log

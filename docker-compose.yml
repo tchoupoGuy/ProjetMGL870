@@ -3,7 +3,6 @@ services:
     build: ./node-api-a
     container_name: node-api-a
     env_file:
-      # - .env
       - ./node-api-a/.env
     ports:
       - '3001:3001'
@@ -19,29 +18,45 @@ services:
     networks:
       - observability
 
-  node-api-b:
-    build: ./node-api-b
-    container_name: node-api-b
-    env_file:
-      # - .env
-      - ./node-api-b/.env
-    ports:
-      - '3002:3002'
+  mysql:
+    image: mysql:8.0
+    container_name: clicmedic_mysql_container
     environment:
-      - APP_NAME=node-api-b
-    depends_on:
-      - loki
-      - jaeger
-      - collector
-      - fluent-bit
+      MYSQL_ROOT_PASSWORD: Guy123456
+      MYSQL_DATABASE: clicmedic_db
+      MYSQL_USER: user
+      MYSQL_PASSWORD: password
+    ports:
+      - '3307:3306'
     volumes:
-      - ./node-api-b/logs:/var/log/api-b
+      - mysql_data:/var/lib/mysql
+    healthcheck:
+      test: ['CMD', 'mysqladmin', 'ping', '-h', 'localhost']
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - observability
+
+  clicmedic_api:
+    build: ./ClicMedic-api
+    container_name: clicmedic_api_container
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/clicmedic_db
+      SPRING_DATASOURCE_USERNAME: user
+      SPRING_DATASOURCE_PASSWORD: password
+      SPRING_JPA_HIBERNATE_DDL_AUTO: update
+    ports:
+      - '8080:8080'
+    depends_on:
+      mysql:
+        condition: service_healthy
     networks:
       - observability
 
   prometheus:
     image: prom/prometheus:latest
-    container_name: node-api-prometheus
+    container_name: java-node-prometheus
     volumes:
       - ./prometheus.yml:/etc/prometheus/prometheus.yml
       - ./alert.rules.yml:/etc/prometheus/alert.rules.yml
@@ -54,16 +69,17 @@ services:
 
   alertmanager:
     image: prom/alertmanager:latest
-    container_name: alertmanager
+    container_name: java-node-alertmanager
     volumes:
       - ./alertmanager.yml:/etc/alertmanager/alertmanager.yml
     ports:
       - '9093:9093'
     networks:
       - observability
+
   loki:
     image: grafana/loki:latest
-    container_name: node-api-loki
+    container_name: java-node-loki
     ports:
       - '3100:3100'
     volumes:
@@ -73,9 +89,12 @@ services:
 
   fluent-bit:
     image: fluent/fluent-bit:latest
-    container_name: node-api-fluent-bit
+    container_name: java-node-fluent-bit
     volumes:
       - ./fluentbit/fluent-bit.conf:/fluent-bit/etc/fluent-bit.conf
+      - ./fluentbit/parsers.conf:/fluent-bit/etc/parsers.conf
+      - ./node-api-a/logs:/var/log/api-a
+      - ./ClicMedic-api/logs:/var/log/clicmedic
     ports:
       - '2020:2020'
       - '2021:2021'
@@ -87,14 +106,14 @@ services:
 
   jaeger:
     image: jaegertracing/all-in-one:1.33
-    container_name: node-api-jaeger
+    container_name: java-node-jaeger
     ports:
-      - '16686:16686' # UI
-      - '14268:14268' # Collector
-      - '14250:14250' # gRPC
-      - '6831:6831/udp' # Agent
-      - '6832:6832/udp' # Agent
-      - '5778:5778' # Sampling
+      - '16686:16686'
+      - '14268:14268'
+      - '14250:14250'
+      - '6831:6831/udp'
+      - '6832:6832/udp'
+      - '5778:5778'
     networks:
       - observability
 
@@ -131,3 +150,6 @@ services:
 networks:
   observability:
     driver: bridge
+
+volumes:
+  mysql_data:
