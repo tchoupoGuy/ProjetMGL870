@@ -14,7 +14,30 @@ services:
       - collector
       - fluent-bit
     volumes:
-      - ./node-api-a/logs:/var/log/api-a
+      - C:\git\ETS\ProjetMGL870\node-api-a/logs:/var/log/api-a
+    networks:
+      - observability
+
+  clicmedic-api:
+    build: ./clicmedic-api
+    container_name: clicmedic-api
+    env_file:
+      - ./clicmedic-api/.env
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/clicmedic_db
+      SPRING_DATASOURCE_USERNAME: user
+      SPRING_DATASOURCE_PASSWORD: password
+      SPRING_JPA_HIBERNATE_DDL_AUTO: update
+    ports:
+      - '8080:8080'
+    depends_on:
+      - loki
+      - jaeger
+      - collector
+      - fluent-bit
+      - mysql
+    volumes:
+      - C:\git\ETS\ProjetMGL870\clicmedic-api/logs:/var/log/clicmedic
     networks:
       - observability
 
@@ -38,21 +61,33 @@ services:
     networks:
       - observability
 
-  clicmedic_api:
-    build: ./ClicMedic-api
-    container_name: clicmedic_api_container
-    environment:
-      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/clicmedic_db
-      SPRING_DATASOURCE_USERNAME: user
-      SPRING_DATASOURCE_PASSWORD: password
-      SPRING_JPA_HIBERNATE_DDL_AUTO: update
+  promtail:
+    image: grafana/promtail:3.2.1
+    container_name: promtail
+    volumes:
+      - ./promtail/promtail.yaml:/etc/promtail/promtail.yaml
+      - ./promtail:/promtail
+      - C:\git\ETS\ProjetMGL870\node-api-a/logs:/var/log/api-a
+      - C:\git\ETS\ProjetMGL870\clicmedic-api/logs:/var/log/clicmedic
+
+    command: -config.file=/etc/promtail/promtail.yaml
     ports:
-      - '8080:8080'
-    depends_on:
-      mysql:
-        condition: service_healthy
+      - '9080:9080'
     networks:
       - observability
+
+  # promtail:
+  #   image: grafana/promtail:3.2.1
+  #   container_name: promtail
+  #   volumes:
+  #     - ./promtail/promtail.yaml:/etc/promtail/promtail.yaml
+  #     - ./promtail:/promtail
+  #     - C:\var_logs:/var/log
+  #   command: -config.file=/etc/promtail/promtail.yaml
+  #   ports:
+  #     - '9080:9080'
+  #   networks:
+  #     - observability
 
   prometheus:
     image: prom/prometheus:latest
@@ -93,8 +128,10 @@ services:
     volumes:
       - ./fluentbit/fluent-bit.conf:/fluent-bit/etc/fluent-bit.conf
       - ./fluentbit/parsers.conf:/fluent-bit/etc/parsers.conf
-      - ./node-api-a/logs:/var/log/api-a
-      - ./ClicMedic-api/logs:/var/log/clicmedic
+      - C:\git\ETS\ProjetMGL870\node-api-a\logs:/var/log/api-a
+      - C:\git\ETS\ProjetMGL870\clicmedic-api/logs:/var/log/clicmedic
+      - ./fluentbit/tail-db:/fluent-bit/tail-db
+
     ports:
       - '2020:2020'
       - '2021:2021'

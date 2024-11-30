@@ -3,6 +3,7 @@ const { NodeSDK } = require('@opentelemetry/sdk-node');
 const { SimpleSpanProcessor } = require('@opentelemetry/sdk-trace-base');
 const { ConsoleSpanExporter } = require('@opentelemetry/sdk-trace-base');
 const { JaegerExporter } = require('@opentelemetry/exporter-jaeger');
+const fs = require('fs');
 const client = require('prom-client');
 const morgan = require('morgan');
 const {
@@ -17,6 +18,16 @@ const mongoose = require('mongoose');
 const passport = require('passport');
 const logger = require('./config/logger');
 require('dotenv').config();
+
+// Assurez-vous que le répertoire des logs existe
+const logDirectory = path.join(__dirname, 'logs');
+fs.existsSync(logDirectory) || fs.mkdirSync(logDirectory);
+
+// Crée un flux d'écriture dans le fichier `api-a.log`
+const accessLogStream = fs.createWriteStream(
+  path.join(logDirectory, 'api-a.log'),
+  { flags: 'a' }
+);
 
 const logLevel = process.env.LOG_LEVEL || 'info';
 const serviceName = process.env.SERVICE_NAME || 'default-service';
@@ -74,6 +85,9 @@ mongoose
 
 require('./models/Utilisateur');
 const userRoutes = require('./routes/user.route');
+
+// Utiliser `morgan` pour écrire les logs dans le fichier
+//app.use(morgan('combined', { stream: accessLogStream }));
 
 app.use(
   morgan('combined', {

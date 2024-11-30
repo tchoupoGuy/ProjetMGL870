@@ -1,6 +1,14 @@
+apiVersion: 1
+
 datasources:
   - name: Loki
     type: loki
     access: proxy
     url: http://loki:3100
     isDefault: true
+    jsonData:
+      maxLines: 1000 # Limite le nombre de lignes retournées pour éviter une surcharge
+      timeField: time # Assure que le champ de temps est bien configuré
+    secureJsonData:
+      basicAuthPassword: '' # Utilisez ce champ si vous avez besoin d'authentification pour Loki (vide si non nécessaire)
+    editable: true # Permet aux utilisateurs de modifier la datasource via l'interface Grafana

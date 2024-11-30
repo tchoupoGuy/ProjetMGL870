@@ -1,16 +1,24 @@
 global:
-  scrape_interval: 15s
+  scrape_interval: 15s # Fréquence par défaut de scraping (modifiable pour chaque job)
 
 scrape_configs:
   - job_name: 'node-api-a'
-    scrape_interval: 5s # Fréquence de scraping (optionnel)
+    scrape_interval: 5s # Fréquence de scraping spécifique à ce job
     static_configs:
-      - targets: ['node-api-a:3001'] # Utilisez le port exposé dans votre Docker Compose pour node-api-a
+      - targets: ['node-api-a:3001'] # Cible le port exposé dans Docker Compose pour node-api-a
+    metrics_path: '/metrics' # Spécifie le chemin des métriques si différent (par défaut /metrics)
 
-  - job_name: 'node-api-b'
-    scrape_interval: 5s
+  - job_name: 'clicmedic-api'
+    scrape_interval: 5s # Fréquence de scraping spécifique à ce job
     static_configs:
-      - targets: ['node-api-b:3002'] # Utilisez le port exposé dans votre Docker Compose pour node-api-b
+      - targets: ['clicmedic-api:8080'] # Cible le port exposé dans Docker Compose pour clicmedic-api
+    metrics_path: '/metrics' # Spécifie le chemin des métriques si différent (par défaut /metrics)
 
 rule_files:
-  - 'alert.rules.yml'
+  - 'alert.rules.yml' # Charge les règles d'alerting définies dans alert.rules.yml
+
+# Vous pouvez ajouter d'autres configurations globales si nécessaire, telles que l'alertmanager ou des paramètres de connexion
+alerting:
+  alertmanagers:
+    - static_configs:
+        - targets: ['alertmanager:9093']

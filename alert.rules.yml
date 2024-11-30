@@ -1,38 +1,83 @@
 groups:
   - name: node-api-alerts
     rules:
+      # Latence élevée pour node-api-a
       - alert: HighRequestLatencyA
-        expr: http_request_duration_ms{job="node-api-a"} > 500
+        expr: histogram_quantile(0.95, sum(rate(http_request_duration_seconds_bucket{job="node-api-a"}[1m])) by (le)) > 0.5
         for: 1m
         labels:
           severity: warning
         annotations:
           summary: 'High request latency on node-api-a'
-          description: 'The request latency is above 500ms for more than 1 minute.'
+          description: 'The 95th percentile request latency is above 500ms for more than 1 minute.'
 
+      # Taux d'erreur élevé pour node-api-a
       - alert: HighErrorRateA
-        expr: rate(http_requests_total{job="node-api-a", statusCode="500"}[5m]) > 0.05
+        expr: rate(http_requests_total{job="node-api-a", statusCode=~"5.."}[5m]) > 0.05
         for: 5m
         labels:
           severity: critical
         annotations:
           summary: 'High error rate on node-api-a'
-          description: 'The error rate is above 5% over the last 5 minutes.'
+          description: 'The error rate is above 5% over the last 5 minutes. Investigate the issue.'
 
-      - alert: HighRequestLatencyB
-        expr: http_request_duration_ms{job="node-api-b"} > 500
+      # Latence élevée pour clicmedic-api
+      - alert: HighRequestLatencyClicMedic
+        expr: histogram_quantile(0.95, sum(rate(http_request_duration_seconds_bucket{job="clicmedic-api"}[1m])) by (le)) > 0.5
         for: 1m
         labels:
           severity: warning
         annotations:
-          summary: 'High request latency on node-api-b'
-          description: 'The request latency is above 500ms for more than 1 minute.'
+          summary: 'High request latency on clicmedic-api'
+          description: 'The 95th percentile request latency is above 500ms for more than 1 minute.'
 
-      - alert: HighErrorRateB
-        expr: rate(http_requests_total{job="node-api-b", statusCode="500"}[5m]) > 0.05
+      # Taux d'erreur élevé pour clicmedic-api
+      - alert: HighErrorRateClicMedic
+        expr: rate(http_requests_total{job="clicmedic-api", statusCode=~"5.."}[5m]) > 0.05
         for: 5m
         labels:
           severity: critical
         annotations:
-          summary: 'High error rate on node-api-b'
-          description: 'The error rate is above 5% over the last 5 minutes.'
+          summary: 'High error rate on clicmedic-api'
+          description: 'The error rate is above 5% over the last 5 minutes. Investigate immediately.'
+
+      # Nouveaux types d'alertes
+      # Utilisation élevée de la CPU pour node-api-a
+      - alert: HighCpuUsageNodeApiA
+        expr: rate(process_cpu_seconds_total{job="node-api-a"}[1m]) > 0.8
+        for: 2m
+        labels:
+          severity: critical
+        annotations:
+          summary: 'High CPU usage on node-api-a'
+          description: 'The CPU usage for node-api-a is above 80% for more than 2 minutes.'
+
+      # Utilisation élevée de la mémoire pour clicmedic-api
+      - alert: HighMemoryUsageClicMedic
+        expr: process_resident_memory_bytes{job="clicmedic-api"} > 500000000
+        for: 2m
+        labels:
+          severity: warning
+        annotations:
+          summary: 'High memory usage on clicmedic-api'
+          description: 'The memory usage is above 500 MB for more than 2 minutes.'
+
+      # Absence de métriques pour node-api-a
+      - alert: MissingMetricsNodeApiA
+        expr: absent(http_requests_total{job="node-api-a"})
+        for: 5m
+        labels:
+          severity: critical
+        annotations:
+          summary: 'No metrics for node-api-a'
+          description: 'No metrics have been received from node-api-a for the last 5 minutes. The service might be down.'
+
+      # Absence de métriques pour clicmedic-api
+      - alert: MissingMetricsClicMedic
+        expr: absent(http_requests_total{job="clicmedic-api"})
+        for: 5m
+        labels:
+          severity: critical
+        annotations:
+          summary: 'No metrics for clicmedic-api'
+          description: 'No metrics have been received from clicmedic-api for the last 5 minutes. Check the service.'

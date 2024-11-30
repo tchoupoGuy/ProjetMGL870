@@ -1,17 +1,51 @@
 global:
   resolve_timeout: 5m
+  # Ajout de la configuration SMTP si un email est utilisé plus tard
+  smtp_smarthost: 'smtp.example.com:587'
+  smtp_from: 'alertmanager@example.com'
+  smtp_auth_username: 'alertmanager@example.com'
+  smtp_auth_password: 'yourpassword'
 
 route:
+  # Route principale pour toutes les alertes
   receiver: 'discord'
-  group_wait: 10s
-  group_interval: 10s
-  repeat_interval: 1h
+  group_wait: 30s # Temps d'attente avant d'envoyer un groupe initial d'alertes
+  group_interval: 5m # Temps entre les alertes dans le même groupe
+  repeat_interval: 1h # Temps entre les rappels d'une même alerte si elle n'est pas résolue
+  routes:
+    # Exemple de sous-routes si vous souhaitez différencier par sévérité ou service
+    - match:
+        severity: critical
+      receiver: 'critical-discord'
+      group_wait: 10s
+      group_interval: 1m
+      repeat_interval: 30m
+
+    - match:
+        severity: warning
+      receiver: 'discord'
+      group_wait: 20s
+      group_interval: 2m
+      repeat_interval: 1h
 
 receivers:
   - name: 'discord'
     webhook_configs:
       - url: 'https://us2.make.com/156537/team/dashboard'
         send_resolved: true
-        http_config:
-          bearer_token: '' # Si nécessaire
-        max_alerts: 0
+        max_alerts: 0 # Pas de limite de regroupement
+
+  - name: 'critical-discord'
+    webhook_configs:
+      - url: 'https://us2.make.com/critical/alerts'
+        send_resolved: true
+        max_alerts: 1 # Regrouper 1 alerte critique à la fois
+
+# Inhibition rules: Évite les alertes redondantes
+inhibit_rules:
+  - source_match:
+      severity: critical
+    target_match:
+      severity: warning
+    equal: ['alertname', 'service']
+    # Bloque les alertes de sévérité "warning" si une alerte critique existe déjà pour le même service
