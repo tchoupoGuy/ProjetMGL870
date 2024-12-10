@@ -1,24 +1,35 @@
 global:
-  scrape_interval: 15s # Fréquence par défaut de scraping (modifiable pour chaque job)
+  scrape_interval: 15s      # Intervalle global par défaut pour le scraping
+  evaluation_interval: 15s  # Intervalle pour l'évaluation des règles
+  external_labels:          # Étiquettes globales pour identifier l'instance
+    environment: production
+    region: europe
 
 scrape_configs:
   - job_name: 'node-api-a'
-    scrape_interval: 5s # Fréquence de scraping spécifique à ce job
+    scrape_interval: 5s      # Scraping spécifique à ce job
     static_configs:
-      - targets: ['node-api-a:3001'] # Cible le port exposé dans Docker Compose pour node-api-a
-    metrics_path: '/metrics' # Spécifie le chemin des métriques si différent (par défaut /metrics)
+      - targets: ['node-api-a:3001']  # Port exposé dans Docker Compose
+    metrics_path: '/metrics'
+    relabel_configs:           # Relabel pour ajouter des informations contextuelles
+      - source_labels: [__address__]
+        target_label: instance
+        replacement: node-api-a
 
   - job_name: 'clicmedic-api'
-    scrape_interval: 5s # Fréquence de scraping spécifique à ce job
+    scrape_interval: 5s
     static_configs:
-      - targets: ['clicmedic-api:8080'] # Cible le port exposé dans Docker Compose pour clicmedic-api
-    metrics_path: '/metrics' # Spécifie le chemin des métriques si différent (par défaut /metrics)
+      - targets: ['clicmedic-api:8080']
+    metrics_path: '/metrics'
+    relabel_configs:
+      - source_labels: [__address__]
+        target_label: instance
+        replacement: clicmedic-api
 
 rule_files:
-  - 'alert.rules.yml' # Charge les règles d'alerting définies dans alert.rules.yml
+  - 'alert.rules.yml'  # Charge les règles d'alerting définies dans alert.rules.yml
 
-# Vous pouvez ajouter d'autres configurations globales si nécessaire, telles que l'alertmanager ou des paramètres de connexion
 alerting:
   alertmanagers:
     - static_configs:
-        - targets: ['alertmanager:9093']
+        - targets: ['alertmanager:9093']  # Connecte l'Alertmanager

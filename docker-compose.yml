@@ -14,7 +14,7 @@ services:
       - collector
       - fluent-bit
     volumes:
-      - C:\git\ETS\ProjetMGL870\node-api-a/logs:/var/log/api-a
+      - C:\\git\\ETS\\ProjetMGL870\\node-api-a\\logs:/var/log/api-a
     networks:
       - observability
 

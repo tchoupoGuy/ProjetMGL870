@@ -1,7 +1,9 @@
 // Importer les modules nécessaires pour OpenTelemetry
 const { NodeSDK } = require('@opentelemetry/sdk-node');
-const { SimpleSpanProcessor } = require('@opentelemetry/sdk-trace-base');
-const { ConsoleSpanExporter } = require('@opentelemetry/sdk-trace-base');
+const {
+  SimpleSpanProcessor,
+  ConsoleSpanExporter,
+} = require('@opentelemetry/sdk-trace-base');
 const { JaegerExporter } = require('@opentelemetry/exporter-jaeger');
 const fs = require('fs');
 const client = require('prom-client');
@@ -17,6 +19,14 @@ const cors = require('cors');
 const mongoose = require('mongoose');
 const passport = require('passport');
 const logger = require('./config/logger');
+const servicesApi = require('./services/api');
+const {
+  clicmedicCallCounter,
+  clicmedicErrorCounter,
+  clicmedicResponseTime,
+  register,
+} = require('./config/metrics');
+// const axios = require('axios');
 require('dotenv').config();
 
 // Assurez-vous que le répertoire des logs existe
@@ -33,7 +43,7 @@ const logLevel = process.env.LOG_LEVEL || 'info';
 const serviceName = process.env.SERVICE_NAME || 'default-service';
 
 // Initialiser les métriques Prometheus
-const register = new client.Registry();
+// const register = new client.Registry();
 client.collectDefaultMetrics({
   register,
   disableTotalNameSuffixForCounters: true,
@@ -158,3 +168,107 @@ app.get('/metrics', async (req, res) => {
 logger.info(
   `Starting service: ${serviceName}, Log level: ${logLevel}, Loki Host: ${process.env.LOKI_HOST}`
 );
+
+// async function executeApiCalls() {
+//   await servicesApi.callCreateMedecin(); // Appel pour créer un médecin
+//   await servicesApi.callCreatePatient(); // Appel pour créer un patient
+//   await servicesApi.callLoginMedecin(); // Appel pour connecter un médecin
+//   await servicesApi.callLoginPatient(); // Appel pour connecter un patient
+// }
+
+// setInterval(executeApiCalls, 5000);
+
+async function executeApiCalls1() {
+  logger.info('Début de la fonction executeApiCalls');
+
+  try {
+    logger.debug("Début de l'appel: callCreateMedecin");
+    await servicesApi.callCreateMedecin();
+    logger.info("Fin de l'appel: callCreateMedecin");
+  } catch (error) {
+    logger.error(`Une erreur s'est produite: ${error.message}`, {
+      stack: error.stack,
+    });
+  }
+
+  logger.info('Fin de la fonction executeApiCalls 1');
+}
+async function executeApiCalls2() {
+  logger.info('Début de la fonction executeApiCalls 2');
+
+  try {
+    logger.debug("Début de l'appel: callCreatePatient");
+    await servicesApi.callCreatePatient();
+    logger.info("Fin de l'appel: callCreatePatient");
+  } catch (error) {
+    logger.error(`Une erreur s'est produite: ${error.message}`, {
+      stack: error.stack,
+    });
+  }
+
+  logger.info('Fin de la fonction executeApiCalls');
+}
+async function executeApiCalls3() {
+  logger.info('Début de la fonction executeApiCalls 3');
+
+  try {
+    logger.debug("Début de l'appel: callLoginMedecin");
+    await servicesApi.callLoginMedecin();
+    logger.info("Fin de l'appel: callLoginMedecin");
+  } catch (error) {
+    logger.error(`Une erreur s'est produite: ${error.message}`, {
+      stack: error.stack,
+    });
+  }
+
+  logger.info('Fin de la fonction executeApiCalls');
+}
+async function executeApiCalls4() {
+  logger.info('Début de la fonction executeApiCalls 4');
+
+  try {
+    logger.debug("Début de l'appel: callLoginPatient");
+    await servicesApi.callLoginPatient();
+    logger.info("Fin de l'appel: callLoginPatient");
+  } catch (error) {
+    logger.error(`Une erreur s'est produite: ${error.message}`, {
+      stack: error.stack,
+    });
+  }
+
+  logger.info('Fin de la fonction executeApiCalls');
+}
+
+async function executeApiCalls() {
+  logger.info('Début de la fonction executeApiCalls');
+
+  try {
+    logger.debug("Début de l'appel: callCreateMedecin");
+    await servicesApi.callCreateMedecin();
+    logger.info("Fin de l'appel: callCreateMedecin");
+
+    logger.debug("Début de l'appel: callCreatePatient");
+    await servicesApi.callCreatePatient();
+    logger.info("Fin de l'appel: callCreatePatient");
+
+    logger.debug("Début de l'appel: callLoginMedecin");
+    await servicesApi.callLoginMedecin();
+    logger.info("Fin de l'appel: callLoginMedecin");
+
+    logger.debug("Début de l'appel: callLoginPatient");
+    await servicesApi.callLoginPatient();
+    logger.info("Fin de l'appel: callLoginPatient");
+  } catch (error) {
+    logger.error(`Une erreur s'est produite: ${error.message}`, {
+      stack: error.stack,
+    });
+  }
+
+  logger.info('Fin de la fonction executeApiCalls');
+}
+
+setInterval(executeApiCalls1, 5000);
+setInterval(executeApiCalls2, 5000);
+setInterval(executeApiCalls3, 5000);
+setInterval(executeApiCalls4, 5000);
+setInterval(executeApiCalls, 5000);

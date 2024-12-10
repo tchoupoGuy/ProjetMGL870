@@ -1,4 +1,4 @@
 positions:
-  /var/log/api-a/api-a.log: "18658"
+  /var/log/api-a/api-a.log: "1193256"
   /var/log/api-a/test.log: "20"
-  /var/log/clicmedic/clicmedic.log: "0"
+  /var/log/clicmedic/clicmedic.log: "410410"
